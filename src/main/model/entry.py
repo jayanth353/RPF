@@ -10,7 +10,6 @@ class Entry(db.Model):
     gd_number = db.Column(db.Integer)
     name = db.Column(db.String(250), nullable=False)
     details = db.Column(db.Text, nullable=False)
-    branch = db.Column(db.String(250), nullable=False)
     date = db.Column(db.DateTime)
 
     def __repr__(self):

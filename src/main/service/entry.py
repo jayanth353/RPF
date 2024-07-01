@@ -22,7 +22,6 @@ class EntryService:
     def get_all_entries(self):
         try:
             entries = Entry.query.all()
-            print("entries", entries)
             entries_list = []
             for entry in entries:
                 entries_list.append(
