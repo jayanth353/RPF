@@ -1,8 +1,7 @@
 import os
 from main.app import app, db
 
-
-if __name__ == "__main__":
+def create_app():
     with app.app_context():
         from main.controller.user import UserController
         from main.controller.entry import EntryController
@@ -14,5 +13,11 @@ if __name__ == "__main__":
         from main.model import user, entry
 
         db.create_all()
+
+    return app
+
+if __name__ == "__main__":
+    app = create_app()
+
     if os.getenv("FLASK_ENV") == "development":
         app.run(host="0.0.0.0", port=os.getenv("PORT"), debug=True)
