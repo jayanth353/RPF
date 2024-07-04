@@ -9,9 +9,11 @@ class EntryService:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
-    def add_entry(self, details, name, gd_number):
+    def add_entry(self, details, name, gd_number, zone):
         try:
-            new_entry = Entry(name=name, details=details, gd_number=gd_number)
+            new_entry = Entry(
+                name=name, details=details, gd_number=gd_number, zone=zone
+            )
             db.session.add(new_entry)
             db.session.commit()
             return new_entry
@@ -31,6 +33,7 @@ class EntryService:
                         "gd_number": entry.gd_number,
                         "details": entry.details,
                         "date": entry.date,
+                        "zone": entry.zone,
                     }
                 )
             return entries_list
@@ -56,6 +59,7 @@ class EntryService:
                         "name": entry.name,
                         "gd_number": entry.gd_number,
                         "details": entry.details,
+                        "zone": entry.zone,
                         "date": entry.date,
                     }
                 )

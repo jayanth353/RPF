@@ -30,6 +30,7 @@ class EntryController:
                     name=entry["name"],
                     details=entry["details"],
                     gd_number=entry["gd_number"],
+                    zone=entry["zone"],
                 )
             return jsonify({"message": "Added successfully"}), 401
         except Exception as e:
