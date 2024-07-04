@@ -26,13 +26,26 @@ class UserController:
             user = self.user_service.user_exists(username, password)
 
             if user:
-                return jsonify({"name": user.name,"username": user.username,"role": user.role, "branch":user.branch,"password":user.password,"email":user.email }), 200
+                return (
+                    jsonify(
+                        {
+                            "name": user.name,
+                            "username": user.username,
+                            "role": user.role,
+                            "branch": user.branch,
+                            "password": user.password,
+                            "email": user.email,
+                            "zone": user.zone,
+                        }
+                    ),
+                    200,
+                )
             else:
                 return jsonify({"message": "Invalid username or password"}), 401
         except Exception as e:
             self.logger.error(f"An error occurred: {e}")
             return jsonify({"error": str(e)}), 500
-    
+
     def add_user(self):
         try:
             data = request.get_json()
