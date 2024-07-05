@@ -21,9 +21,9 @@ class UserController:
     def login(self):
         try:
             data = request.get_json()
-            username = data.get("username")
+            email = data.get("email")
             password = data.get("password")
-            user = self.user_service.user_exists(username, password)
+            user = self.user_service.user_exists(email, password)
 
             if user:
                 return (

@@ -8,9 +8,9 @@ class UserService:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
-    def user_exists(self, username, password):
+    def user_exists(self, email, password):
         try:
-            user = User.query.filter_by(username=username, password=password).first()
+            user = User.query.filter_by(email=email, password=password).first()
             return user
         except Exception as e:
             self.logger.error(f"An error occurred: {e}")
